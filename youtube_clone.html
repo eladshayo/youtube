@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      eladsh
+    </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+OutLined">
+    <style>
+      
+      .nav-button{
+        padding: 0%;
+        border: 0px;
+        aspect-ratio: 1/1;
+        width: 44px;
+        height: 44px;
+        display: inline;
+        opacity: .84;
+        background-color: rgba(0,0,0,0);
+        transition: transform 0.25s;
+      }
+      .nav-button:hover{
+        cursor: pointer;
+        transform: scale(1.02);
+      }
+      .nav-button:active{
+        cursor: pointer;
+        transform: scale(.9);
+      }
+
+      .nav-chip{
+        border-radius: 10px;
+        border: 0px;
+        padding-left: 26px;
+        padding-right: 26px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-family: 'Franklin Gothic Medium';
+        font-size: 100%;
+        width: 100px;
+        min-width: 50px;
+        background-color: rgb(201, 201, 201);
+        transition: transform 0.25s, background-color .2s;
+      }
+      .nav-chip:hover{
+        cursor: pointer;
+        background-color: rgb(178, 178, 178);
+        transform: scale(1.02);
+      }
+      .nav-chip:active{
+        cursor: pointer;
+        transform: scale(.94);
+      }
+      .vid-div{
+        display: inline;
+        vertical-align: top; 
+        min-width: 50px;
+        max-width: 340px;
+        flex:auto;
+        width: auto;
+        transition: transform .2s;
+      }
+      .vid-div:hover{
+        transform: scale(1.004);
+        cursor: pointer;
+      }
+      .vid-div:active{
+        transform: scale(.996);
+      }
+
+      .side-bar{
+        /* background-color: aquamarine; */
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        flex-direction: column;
+        gap: 10px;
+        height: 100%;
+        width: 100%;
+        max-width: 180px;
+        min-width: 60px;
+        padding-right: 20px;
+        padding-left: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        vertical-align: top;
+      }
+      .side-bar-button{
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: left;
+        align-items: center;
+        border-radius: 12px;
+        border-width: 2px;
+        border-color: rgba(0,0,0,.04);
+        width: 100%;
+        background-color: rgb(231, 231, 231);
+        max-width: 240px;
+        aspect-ratio: 16/5;
+        padding-left: 24px;
+        transform: scale(1);
+        transition: background-color .2s ,transform .1s;
+      }
+      .side-bar-button:hover {
+        background-color: rgb(209, 209, 209);
+        transform: scale(1.04);
+      }
+      .side-bar-button:active {
+        background-color: rgb(184, 184, 184);
+        transform: scale(1.01);
+      }
+
+      .side-nav-img{
+        display: inline-block;
+        opacity: .84;
+        vertical-align: middle;
+        width: 34px;
+        aspect-ratio: 1/1;
+        padding-right: 10px;
+        transition: opacity .1s;
+      }
+
+      .side-nav-text{
+        display: inline;
+        opacity: .84;
+        margin: 0px;
+        vertical-align:middle;
+        font-size: 20px;
+        font-weight: 600;
+        transition: opacity .1s;
+      }
+
+      @media (max-width: 790px) {
+        .side-bar{
+          /* background-color: brown; */
+          width: 70px;
+          padding-right: 30px;
+        }
+        .side-bar-button{
+          aspect-ratio: 1/1;
+          padding: 10px;
+          gap: 0px;
+          width: 80px;
+          flex-direction: column;
+        }
+        .side-nav-img{
+          padding-right: 0px;
+        }
+      }
+      @media screen and (max-width: 690px) {
+        .side-bar{
+          background-color:blue;
+          display: none !important;
+        }
+        #side-bar-line{
+          display: none !important;
+        }
+      }
+      
+      .search-bar{
+        --width: 390px;    
+        --height: 45px;      
+        width: auto;
+        height: var(--height);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: calc(var(--width)*8);
+        transition: background-color .2s;
+        background-color: rgb(233, 233, 233);
+        position: relative;
+        > input {
+          width: var(--height);
+          height: var(--height);
+          box-sizing: border-box;
+          border-radius: calc(var(--width)*8);
+          background-color: rgb(233, 233, 233);
+          transition: width .3s ease, border-radius .1s, background-color 3s , height .6s ease , opacity .2s ease-in-out;
+          z-index: 10;
+          opacity: 0;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          margin: 0px;
+          &:hover{
+            cursor: pointer;
+            opacity: 0;
+            width: calc(var(--height)*2.2);
+            transition: width .3s cubic-bezier(0.3, 0.8, 0.4, 1.6);
+          }
+          
+          &:focus{
+            margin-left: 20px;
+            margin-right: 60px;
+            opacity: 1;
+            cursor: text;
+            width: calc(var(--height)*5.6);
+            transition: width .3s cubic-bezier(0.3, 0.8, 0.4, 1.2);
+          }
+      
+        }
+
+        > input:hover ~ #search-img {
+          opacity: 0;
+          transition: opacity .1s ease-in-out;
+        }
+        > input:hover ~ #search-text {
+          opacity: 1;
+          transition: opacity .3s ease-in-out;
+        }
+        > input:hover ~ #submit-search {
+          opacity: 0;
+        }
+
+        > input:focus ~ #search-img {
+          opacity: 0;
+          transition: opacity .15s ease-in-out;
+        }
+        > input:focus ~ #search-text {
+          opacity: 0;
+          transition: opacity .15s ease-in-out;
+        }
+        > input:focus ~ #submit-search {
+          opacity: 1;
+          z-index: 20;
+        }
+
+        > #search-text,#search-img{
+          position: absolute;
+        }
+        > #search-text{
+          transition: opacity .1s ease-in-out;
+          opacity: 0;
+          transform: translate(0px,8px);
+          margin: 0px;
+          top: 0px;
+          font-weight: 500;
+          font-size: 20px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        > #search-img{
+          transition: opacity .3s ease-in-out;
+          opacity: 1;
+          width: var(--height);
+          height: var(--height);
+          margin: 0px;
+          transform: scale(.8);
+        }
+        > #submit-search{
+          position: absolute;
+          opacity: 0;
+          width: calc(var(--height)*.74);
+          height: calc(var(--height)*.74);
+          margin: 0px;
+          right: 0px;
+          background-color: rgba(255, 255, 255, 1);
+          border:none;
+          border-radius:var(--width);
+          z-index: 0;
+          right: 6px;
+          --curve: cubic-bezier(0.2, -0.4,.1,2);
+          transition: opacity .15s ease-in-out, height .2s var(--curve),width .2s var(--curve), right .2s ease-out;
+          &:hover{
+            width: calc(var(--height)*.85);
+            height: calc(var(--height)*.85);
+            right: 2px;
+            cursor: pointer;
+          }
+        }
+
+    }
+      
+    </style>
+  </head>
+  <body>
+    
+    <div id="head-nav-bar" style="justify-content: space-between;display: flex;margin-bottom: 8px;margin-top: 16px;margin-left: 20px;margin-right: 20px; height: fit-content;">
+      
+      <button class="nav-button" style="aspect-ratio: .7/1; background-image: url(..images/hamburger.png); background-size: cover;"></button>
+
+      <div id="search" style=" margin-left: 40px;display: inline-flex;vertical-align: middle;">
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <img id="search-img" src="..images/search.png">
+          <p id="search-text">Search</p>
+          <button id="submit-search"><img src="..images/search.png" style="width: 100%;aspect-ratio: 1/1;opacity: .8;"></button>
+        </div>
+        
+        
+      </div>
+
+      <div style="display:inline-flex; gap: 6px; direction: rtl;">
+        <button class="nav-button" style="scale: 1.2;margin-left: 10px;margin-right: 8px;background-image: url(..images/acount.png); background-size: cover;"></button>
+        <button class="nav-button" style="background-image: url(..images/bell.png); background-size: cover;"></button>
+        <button class="nav-button" style="background-image: url(..images/create-vid.png); background-size: cover;"></button>
+      </div>
+    </div>
+
+
+    <div style="width: 100%; display: block; height: 2px; opacity: .3; background-color: black; margin-bottom: 14px;border-radius: 30%;" ></div>
+
+    <div style="display: flex;">
+
+      <div class="side-bar">
+        <button class="side-bar-button"><img src="..images/home.png" class="side-nav-img"><p class="side-nav-text">home</p></button>
+        <button class="side-bar-button"><img src="..images/leyers.png" class="side-nav-img"><p class="side-nav-text">leyers</p></button>
+        <button class="side-bar-button"><img src="..images/library.png" class="side-nav-img"><p class="side-nav-text">library</p></button>
+        <button class="side-bar-button"><img src="..images/sign-out.png" class="side-nav-img"><p class="side-nav-text">sign-out</p></button>
+      </div>
+
+      <div style="display: inline;">
+      
+        <div id="filter-chips" style="display: flex; gap: 16px; justify-content: center;margin-bottom: 26px;">
+          <button class="nav-chip">filter</button>
+          <button class="nav-chip">filter</button>
+          <button class="nav-chip">filter</button>
+          <button class="nav-chip">filter</button>
+          <button class="nav-chip">filter</button>
+        </div>
+        
+        <div id="videos" style="gap: 26px; display: flex;flex-wrap: wrap;justify-content: center;flex-basis: content;">
+          
+            <div id="vid-content" class="vid-div">    
+              <img src="..images/tiktok.png" style="width: 100%;aspect-ratio: 16/9; display:block; object-fit: fill; border-radius: 12px;margin-bottom:16px;">
+              <div style="display: flex;width: 100%;gap: 20px;">
+                <img src="..images/tiktok.png" style="width: 12%;height: 100%; aspect-ratio: 1/1; display:block; object-fit: fill;border-radius: 50%;">
+                <div style="display: inline-flex; flex-direction: column;gap: 5px;vertical-align: top;margin: 0%;">
+                  <p style="font-family:Arial; font-weight: 600; display: block; vertical-align: top;margin: 0%;font-size: 100%;"> 
+                    HTML & CSS Full Course - Beginner to Pro
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    SuperSimpleDev
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    10M views • 2 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div id="vid-content" class="vid-div">    
+              <img src="..images/tiktok.png" style="width: 100%;aspect-ratio: 16/9; display:block; object-fit: fill; border-radius: 12px;margin-bottom:16px;">
+              <div style="display: flex;width: 100%;gap: 20px;">
+                <img src="..images/tiktok.png" style="width: 12%;height: 100%; aspect-ratio: 1/1; display:block; object-fit: fill;border-radius: 50%;">
+                <div style="display: inline-flex; flex-direction: column;gap: 5px;vertical-align: top;margin: 0%;">
+                  <p style="font-family:Arial; font-weight: 600; display: block; vertical-align: top;margin: 0%;font-size: 100%;"> 
+                    HTML & CSS Full Course - Beginner to Pro
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    SuperSimpleDev
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    10M views • 2 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div id="vid-content" class="vid-div">    
+              <img src="..images/tiktok.png" style="width: 100%;aspect-ratio: 16/9; display:block; object-fit: fill; border-radius: 12px;margin-bottom:16px;">
+              <div style="display: flex;width: 100%;gap: 20px;">
+                <img src="..images/tiktok.png" style="width: 12%;height: 100%; aspect-ratio: 1/1; display:block; object-fit: fill;border-radius: 50%;">
+                <div style="display: inline-flex; flex-direction: column;gap: 5px;vertical-align: top;margin: 0%;">
+                  <p style="font-family:Arial; font-weight: 600; display: block; vertical-align: top;margin: 0%;font-size: 100%;"> 
+                    HTML & CSS Full Course - Beginner to Pro
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    SuperSimpleDev
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    10M views • 2 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div id="vid-content" class="vid-div">    
+              <img src="..images/tiktok.png" style="width: 100%;aspect-ratio: 16/9; display:block; object-fit: fill; border-radius: 12px;margin-bottom:16px;">
+              <div style="display: flex;width: 100%;gap: 20px;">
+                <img src="..images/tiktok.png" style="width: 12%;height: 100%; aspect-ratio: 1/1; display:block; object-fit: fill;border-radius: 50%;">
+                <div style="display: inline-flex; flex-direction: column;gap: 5px;vertical-align: top;margin: 0%;">
+                  <p style="font-family:Arial; font-weight: 600; display: block; vertical-align: top;margin: 0%;font-size: 100%;"> 
+                    HTML & CSS Full Course - Beginner to Pro
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    SuperSimpleDev
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    10M views • 2 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div id="vid-content" class="vid-div">    
+              <img src="..images/tiktok.png" style="width: 100%;aspect-ratio: 16/9; display:block; object-fit: fill; border-radius: 12px;margin-bottom:16px;">
+              <div style="display: flex;width: 100%;gap: 20px;">
+                <img src="..images/tiktok.png" style="width: 12%;height: 100%; aspect-ratio: 1/1; display:block; object-fit: fill;border-radius: 50%;">
+                <div style="display: inline-flex; flex-direction: column;gap: 5px;vertical-align: top;margin: 0%;">
+                  <p style="font-family:Arial; font-weight: 600; display: block; vertical-align: top;margin: 0%;font-size: 100%;"> 
+                    HTML & CSS Full Course - Beginner to Pro
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    SuperSimpleDev
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    10M views • 2 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div id="vid-content" class="vid-div">    
+              <img src="..images/tiktok.png" style="width: 100%;aspect-ratio: 16/9; display:block; object-fit: fill; border-radius: 12px;margin-bottom:16px;">
+              <div style="display: flex;width: 100%;gap: 20px;">
+                <img src="..images/tiktok.png" style="width: 12%;height: 100%; aspect-ratio: 1/1; display:block; object-fit: fill;border-radius: 50%;">
+                <div style="display: inline-flex; flex-direction: column;gap: 5px;vertical-align: top;margin: 0%;">
+                  <p style="font-family:Arial; font-weight: 600; display: block; vertical-align: top;margin: 0%;font-size: 100%;"> 
+                    HTML & CSS Full Course - Beginner to Pro
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    SuperSimpleDev
+                  </p>
+                  <p style="font-family: Arial; font-weight: 540; display: block; vertical-align: top; color: rgba(0, 0, 0,.8);margin: 0%;font-size: 80%;"> 
+                    10M views • 2 years ago
+                  </p>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </body>
+</html>
